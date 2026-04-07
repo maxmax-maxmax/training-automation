@@ -22,9 +22,9 @@ A fully automated training monitoring system on top of intervals.icu, replacing 
 - **Bikepacking trip**: May 12–23 (900km, ~10k elevation)
 - **Gravel race**: June 6 (140km, 2500m — Gravelooza)
 
-Weekly structure: Mon strength · Tue indoor hard · Wed easy run · Thu indoor Z2 · Sat long ride · Sun back-to-back
+Weekly structure: Mon strength · Tue indoor hard · Wed run + bikepacking strength · Thu indoor Z2 · Sat long ride · Sun back-to-back
 
-Periodization: 3 build weeks → 1 recovery week → 1 final build/taper. All events loaded in intervals.icu calendar through May 5.
+Periodization: 3 build weeks → 1 recovery week → 1 final build/taper. All events loaded in intervals.icu calendar through May 10.
 
 ---
 
