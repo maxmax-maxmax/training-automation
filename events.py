@@ -48,6 +48,7 @@ def _prepare_event_data(  # pylint: disable=too-many-arguments,too-many-position
     distance: int | None,
     category: str | None = None,
     color: str | None = None,
+    for_week: bool | None = None,
 ) -> dict[str, Any]:
     """Prepare event data dictionary for API request.
 
@@ -65,6 +66,8 @@ def _prepare_event_data(  # pylint: disable=too-many-arguments,too-many-position
     }
     if color:
         data["color"] = color
+    if for_week:
+        data["for_week"] = True
     return data
 
 
@@ -296,6 +299,7 @@ async def add_or_update_event(  # pylint: disable=too-many-arguments,too-many-po
     distance: int | None = None,
     category: str | None = None,
     color: str | None = None,
+    for_week: bool | None = None,
 ) -> str:
     """Post event for an athlete to Intervals.icu this follows the event api from intervals.icu
     If event_id is provided, the event will be updated instead of created.
@@ -314,6 +318,7 @@ async def add_or_update_event(  # pylint: disable=too-many-arguments,too-many-po
         distance: Total expected distance of the workout in meters (optional)
         category: Event category (e.g. NOTE, WORKOUT, RACE, SICK, HOLIDAY) (optional, defaults to WORKOUT)
         color: Event color (e.g. red, orange, green, blue) (optional)
+        for_week: If True, creates the note as a week note visible in the week notes column (optional)
 
     Example:
         "workout_doc": {
@@ -373,7 +378,7 @@ async def add_or_update_event(  # pylint: disable=too-many-arguments,too-many-po
 
     try:
         event_data = _prepare_event_data(
-            name, workout_type, start_date, workout_doc, moving_time, distance, category, color
+            name, workout_type, start_date, workout_doc, moving_time, distance, category, color, for_week
         )
         return await _create_or_update_event_request(
             athlete_id_to_use, api_key, event_data, start_date, event_id
